@@ -1,5 +1,5 @@
-Password required
-=================
+Django Password Required
+========================
 
 A reusable Django app for requiring a password to access some pages on a
 site, without requiring users to register an account.
