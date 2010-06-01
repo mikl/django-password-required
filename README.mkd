@@ -1,0 +1,19 @@
+Password required
+=================
+
+A reusable Django app for requiring a password to access some pages on a
+site, without requiring users to register an account.
+
+This is a very simple method of authentication, and is intended to
+provide a low barrier of entry to a site that is not completely public.
+
+Use cases could be previews of sites that users are not supposed to log
+in to, Stack Overflow-style beta tests, etc.
+
+Using the `@password_required` decorator, you can password-protect
+individual views (even with different passwords).
+
+This module is based on simple session variables, and thus interoperable
+with `django.contrib.auth`, allowing you to optionally bypass password
+protection for all authenticated users, or only for certain groups.
+
