@@ -1,8 +1,8 @@
 Django Password Required
 ========================
 
-A reusable Django app for requiring a password to access some pages on a
-site, without requiring users to register an account.
+A reusable [Django][] app for requiring a password to access some pages on
+a site, without requiring users to register an account.
 
 This is a very simple method of authentication, and is intended to
 provide a low barrier of entry to a site that is not completely public.
@@ -16,4 +16,62 @@ individual views.
 This module is based on simple session variables, and thus interoperable
 with `django.contrib.auth`, allowing you to optionally bypass password
 protection for all authenticated users, or only for certain groups.
+
+Usage
+-----
+
+0. Install the app.  
+   Not really within the scope of this document, but if you have [pip][]
+   installed, you could do something like this:
+
+   `pip install -e git+git://github.com/mikl/django-password-required.git#egg=password_required`
+
+   If you are developing multiple Django sites, you should probably use
+   [virtualenv][] to keep their dependencies separate.
+1. Add `password_required` to `INSTALLED_APPS` in your
+   [Django settings file][settings].
+2. Set `PASSWORD_REQUIRED_PASSWORD` to the preferred password in your
+   Django settings file. Example:
+
+   `PASSWORD_REQUIRED_PASSWORD = 'mysecretpassword'`
+3. Add the password required login page to your [URLconf][]. Example:
+
+   `(r'^password_required/$', 'password_required.views.login'),`
+4. Apply the `@password_required` decorator to your views like in this
+   final code example.
+
+
+    from password_required.decorators import password_required
+    [...more imports...]
+
+    @password_required
+    def my_awesome_view(request):
+        [...view code here...]
+
+
+Requirements
+------------
+
+This app requires Django 1.2 or later.
+
+
+License
+-------
+
+This app is [BSD-licensed][BSD], just like Django.
+
+
+Development, support and feedback
+---------------------------------
+
+If you have problems, find a bug or have other feedback, please file an
+issue on the [main Github repo][repo].
+
+[Django]: http://www.djangoproject.com/
+[pip]: http://pip.openplans.org/
+[virtualenv]: http://pypi.python.org/pypi/virtualenv
+[settings]: http://docs.djangoproject.com/en/1.2/topics/settings/
+[URLconf]: http://docs.djangoproject.com/en/1.2/topics/http/urls/#topics-http-urls
+[BSD]: http://www.opensource.org/licenses/bsd-license.php
+[repo]: http://github.com/mikl/django-password-required
 
