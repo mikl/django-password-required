@@ -11,7 +11,7 @@ Use cases could be previews of sites that users are not supposed to log
 in to, Stack Overflow-style beta tests, etc.
 
 Using the `@password_required` decorator, you can password-protect
-individual views (even with different passwords).
+individual views.
 
 This module is based on simple session variables, and thus interoperable
 with `django.contrib.auth`, allowing you to optionally bypass password
