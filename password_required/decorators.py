@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """ The password_required decorator for Django views """
 from functools import update_wrapper, wraps
 from django.contrib.auth import REDIRECT_FIELD_NAME
