@@ -15,8 +15,11 @@ def login(request, template_name='password_required_login.html',
           redirect_field_name=REDIRECT_FIELD_NAME,
           authentication_form=AuthenticationForm):
     """Displays the login form and handles the login action."""
-
     redirect_to = _clean_redirect(request.REQUEST.get(redirect_field_name, ''))
+
+    # If the user is already logged in, redirect him immediately.
+    if request.session.get('password_required_auth', False):
+        return HttpResponseRedirect(redirect_to)
 
     if request.method == "POST":
         form = authentication_form(data=request.POST)
