@@ -23,7 +23,7 @@ class AuthenticationForm(forms.Form):
         super(AuthenticationForm, self).__init__(*args, **kwargs)
 
 
-    def clean(self):
+    def clean_password(self):
         """
         Validate that the password entered was correct.
         """
