@@ -13,7 +13,7 @@ setup(
         'password_required',
     ],
     package_data={
-        'password_required': ['templates/password_required/*'],
+        'password_required': ['templates/*'],
     },
     classifiers=[
         'Development Status :: 3 - Alpha',
