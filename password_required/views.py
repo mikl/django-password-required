@@ -4,11 +4,11 @@ from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.contrib.sites.models import Site
 from django.contrib.sites.requests import RequestSite
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from password_required.forms import AuthenticationForm
+import re
 
 @csrf_protect
 @never_cache
@@ -43,12 +43,12 @@ def login(request, template_name='password_required_login.html',
     else:
         current_site = RequestSite(request)
 
-    return render_to_response(template_name, {
+    return render(request, template_name, {
         'form': form,
         redirect_field_name: redirect_to,
         'site': current_site,
         'site_name': current_site.name,
-    }, context_instance=RequestContext(request))
+    })
 
 def _clean_redirect(redirect_to):
     """
