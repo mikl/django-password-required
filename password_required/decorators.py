@@ -2,7 +2,7 @@
 """ The password_required decorator for Django views """
 from functools import update_wrapper, wraps
 from django.contrib.auth import REDIRECT_FIELD_NAME
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.utils.decorators import available_attrs
 from django.utils.http import urlquote
