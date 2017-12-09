@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 from django.contrib.auth import REDIRECT_FIELD_NAME
-from django.contrib.sites.models import Site, RequestSite
+from django.contrib.sites.models import Site
+from django.contrib.sites.requests import RequestSite
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from password_required.forms import AuthenticationForm
+import re
 
 @csrf_protect
 @never_cache
@@ -15,7 +16,7 @@ def login(request, template_name='password_required_login.html',
           redirect_field_name=REDIRECT_FIELD_NAME,
           authentication_form=AuthenticationForm):
     """Displays the login form and handles the login action."""
-    redirect_to = _clean_redirect(request.REQUEST.get(redirect_field_name, ''))
+    redirect_to = _clean_redirect(request.GET.get(redirect_field_name, ''))
 
     # If the user is already logged in, redirect him immediately.
     if request.session.get('password_required_auth', False):
@@ -42,12 +43,12 @@ def login(request, template_name='password_required_login.html',
     else:
         current_site = RequestSite(request)
 
-    return render_to_response(template_name, {
+    return render(request, template_name, {
         'form': form,
         redirect_field_name: redirect_to,
         'site': current_site,
         'site_name': current_site.name,
-    }, context_instance=RequestContext(request))
+    })
 
 def _clean_redirect(redirect_to):
     """
