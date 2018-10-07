@@ -39,7 +39,10 @@ Usage
 
 3. Add the password required login page to your [URLconf][]. Example:
 
-   `(r'^password_required/$', 'password_required.views.login'),`
+   ```
+   import password_required.views
+   url(r'^password_required/$', password_required.views.login),
+   ```
 
 4. Apply the `@password_required` decorator to your views like in this
    final code example.
