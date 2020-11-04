@@ -59,7 +59,7 @@ Usage
 Requirements
 ------------
 
-This app requires Django 1.2 or later.
+This app requires Python 3 and Django 1.5 or later.
 
 
 License
@@ -77,8 +77,8 @@ issue on the [main Github repo][repo].
 [Django]: http://www.djangoproject.com/
 [pip]: http://pip.openplans.org/
 [virtualenv]: http://pypi.python.org/pypi/virtualenv
-[settings]: http://docs.djangoproject.com/en/1.2/topics/settings/
-[URLconf]: http://docs.djangoproject.com/en/1.2/topics/http/urls/#topics-http-urls
+[settings]: http://docs.djangoproject.com/en/1.5/topics/settings/
+[URLconf]: http://docs.djangoproject.com/en/1.5/topics/http/urls/#topics-http-urls
 [BSD]: http://www.opensource.org/licenses/bsd-license.php
 [repo]: http://github.com/mikl/django-password-required
 
